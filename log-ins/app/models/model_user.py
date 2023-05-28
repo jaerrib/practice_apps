@@ -1,7 +1,12 @@
+import re
+from flask import flash
 from app.config.mysqlconnection import connectToMySQL
+
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User:
     DB = 'user_logins'
+
 
     def __init__(self, data):
         self.id = data['id']
@@ -13,7 +18,7 @@ class User:
 
     @classmethod
     def get_all(cls):
-        query = 'SELECT * from users;'
+        query = 'SELECT * FROM users;'
         results = connectToMySQL(cls.DB).query_db(query)
         users = []
         for user in results:
@@ -21,6 +26,44 @@ class User:
         return users
 
     @classmethod
+    def get_by_username(cls, data):
+        query = 'SELECT * FROM users WHERE username = %(username)s;'
+        result = connectToMySQL(cls.DB).query_db(query, data)
+        if len(result) < 1:
+            return False
+        return cls(result[0])
+
+    @classmethod
     def save(cls, data):
-        query = 'INSERT INTO users (username, email, password);'
+        # query = 'INSERT INTO users (username, email, password) \
+        #     VALUES (%(username)s, %(email)s, %(password)s;'
+        query = "INSERT INTO users (username, email, password) \
+            VALUES (%(username)s, %(email)s, %(password)s);"
         return connectToMySQL(cls.DB).query_db(query, data)
+
+    @classmethod
+    def validate_login(cls, data):
+        is_valid = True
+        if data['username'] == "" or \
+            data['password'] == "":
+            flash('All fields required')
+            is_valid = False
+        return is_valid
+
+    @classmethod
+    def validate_new_user(cls, data):
+        is_valid = True
+        if data['username'] == "" or \
+            data['email'] == "" or \
+            data['password'] == "":
+            flash('All fields required')
+            is_valid = False
+        if not EMAIL_REGEX.match(data['email']):
+            flash('Invalid email address')
+            is_valid = False
+        query = 'SELECT * FROM users WHERE email = %(email)s;'
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        if len(results) != 0:
+            flash('This email already exists')
+            is_valid = False
+        return is_valid
