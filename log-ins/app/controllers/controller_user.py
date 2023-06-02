@@ -29,7 +29,7 @@ def login():
         flash('Invalid username/password')
         return redirect('/')
     session['user_id'] = user_in_db.id
-    return render_template('success.html', user_id=session['user_id'])
+    return render_template('success.html', username=data['username'])
 
 
 @app.route('/users/new_user')
@@ -47,7 +47,6 @@ def register():
         'email': request.form['email'],
         'password': pw_hash
     }
-    print(data)
     user_id = User.save(data)
     session['user_id'] = user_id
-    return render_template('success.html', user_id=session['user_id'])
+    return render_template('success.html', username=data['username'])

@@ -35,8 +35,6 @@ class User:
 
     @classmethod
     def save(cls, data):
-        # query = 'INSERT INTO users (username, email, password) \
-        #     VALUES (%(username)s, %(email)s, %(password)s;'
         query = "INSERT INTO users (username, email, password) \
             VALUES (%(username)s, %(email)s, %(password)s);"
         return connectToMySQL(cls.DB).query_db(query, data)
@@ -46,7 +44,7 @@ class User:
         is_valid = True
         if data['username'] == "" or \
             data['password'] == "":
-            flash('All fields required')
+            flash('All fields required', 'login')
             is_valid = False
         return is_valid
 
@@ -56,14 +54,14 @@ class User:
         if data['username'] == "" or \
             data['email'] == "" or \
             data['password'] == "":
-            flash('All fields required')
+            flash('All fields required', 'register')
             is_valid = False
         if not EMAIL_REGEX.match(data['email']):
-            flash('Invalid email address')
+            flash('Invalid email address', 'register')
             is_valid = False
         query = 'SELECT * FROM users WHERE email = %(email)s;'
         results = connectToMySQL(cls.DB).query_db(query, data)
         if len(results) != 0:
-            flash('This email already exists')
+            flash('This email already exists', 'register')
             is_valid = False
         return is_valid
