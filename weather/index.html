@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="js/script.js" defer></script>
+    <title>DojoWeather</title>
+</head>
+
+<body>
+    <!-- Container -->
+    <div class="container">
+        <!-- Nav Container -->
+        <div class="d-flex bg-dark text-light">
+
+            <!-- Nav Bar -->
+            <div class="d-flex justify-content-center p-3">
+                <h1>DojoWeather</h1>
+                <ul>
+                    <li><a href="#" class="city_link" onclick="loadReport()">Burbank</a></li>
+                    <li><a href="#" class="city_link" onclick="loadReport()">Chicago</a></li>
+                    <li><a href="#" class="city_link" onclick="loadReport()">Dallas</a></li>
+                </ul>
+            </div>
+            <!-- End Nav Bar -->
+        </div>
+        <!-- End Nav Container -->
+        <!-- Main Content -->
+        <div class="container mt-3">
+            <div class="header">
+                <h2 class="city_Name">San Jose</h2>
+                <div class="temperature">
+                    <label for="temp">show temperature in</label>
+                    <select name="temp" id="temp" onchange='if(this.value != 0) {recalcTemps(value); }'>
+                        <option value="C">C</option>
+                        <option value="F">F</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="daily_forecast">
+                <div class="card">
+                    <h3 class="text-center">Today</h3>
+                    <img src="img/some_rain.png" alt="some rain" class="weather_icon">
+                    <p class="forecast">some rain</p>
+                    <div class="temps">
+                        <div class="text-danger"><span id="today_high">24</span>°</div>
+                        <div class="text-primary"><span id="today_low">18</span>°</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-center">Tomorrow</h3>
+                    <img src="img/some_sun.png" alt="some sun" class="weather_icon">
+                    <p class="forecast">some sun</p>
+                    <div class="temps">
+                        <div class="text-danger"><span id="tomorrow_high">27</span>°</div>
+                        <div class="text-primary"><span id="tomorrow_low">19</span>°</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-center">Friday</h3>
+                    <img src="img/some_clouds.png" alt="some clouds" class="weather_icon">
+                    <p class="forecast">some clouds</p>
+                    <div class="temps">
+                        <div class="text-danger"><span id="fri_high">21</span>°</div>
+                        <div class="text-primary"><span id="fri_low">16</span>°</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-center">Saturday</h3>
+                    <img src="img/some_sun.png" alt="some sun" class="weather_icon">
+                    <p class="forecast">some sun</p>
+                    <div class="temps">
+                        <div class="text-danger"><span id="sat_high">26</span>°</div>
+                        <div class="text-primary"><span id="sat_low">21</span>°</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cookie Banner -->
+            <div class="d-flex justify-content-between position-fixed" id="cookie_banner">
+                <img src="img/cookie.png" alt="cookie" class="cookie_img">
+                <div class="cookie_text">
+                    <h3>Stop! Cookie Time</h3>
+                    <p>
+                        We use cookies (sadly not the edible ones) to personalize content and ads, to provide social
+                        media features and to anaylse our traffic. <a href="#">Read more...</a>
+                    </p>
+                </div>
+                <button class="btn btn-primary" onclick="hide()">I accept</button>
+            </div>
+            <!-- End Cookie Banner -->
+            <!-- End Main Content -->
+        </div>
+    </div>
+    <!-- End Container -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
