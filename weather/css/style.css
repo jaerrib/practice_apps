@@ -1,12 +1,12 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
-}
+} */
 
-.container {
+/* .container {
     background-color: white;
     font-family: sans-serif;
-}
+} */
 
 /* .nav_container {
     display: flex;
@@ -36,48 +36,48 @@ li {
     margin-left: 55px;
 }
 
-a.city_link {
+/* a.city_link {
     color: white;
     text-decoration: none;
 
-}
+} */
 
 /* End Nav Bar */
 
 /* End Nav Container */
 
-.main_content {
+/* .main_content {
     color: black;
     margin: 20px auto 0;
     width: 1000px;
-}
+} */
 
 hr {
     margin: 20px auto;
 }
 
-.header {
+/* .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-}
+} */
 
 /* End Header */
 
-.daily_forecast {
+/* .daily_forecast {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    /* padding: 0; */
-}
+    /* padding: 0;
+} */
 
-.day_card {
+/* .day_card {
     background-color: #eeeeee;
     padding: 25px;
-}
+} */
 
-.day,
+/* .day,
 .forecast {
     text-align: center;
 }
@@ -95,17 +95,17 @@ hr {
     font-weight: bold;
     justify-content: space-evenly;
     margin-top: 10px;
-}
+} */
 
-.high {
+/* .high {
     color: #cf2a27;
 }
 
 .low {
     color: #337de4;
-}
+} */
 
-#cookie_banner {
+/* #cookie_banner {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -115,13 +115,13 @@ hr {
     padding: 10px;
     position: fixed;
     width: 980px;
-}
+} */
 
-.cookie_img {
+/* .cookie_img {
     width: 75px;
-}
+} */
 
-.cookie_text {
+/* .cookie_text {
     margin: 0 20px;
 }
 
@@ -130,7 +130,7 @@ hr {
     font-weight: bold;
     padding: 10px;
     width: 100px;
-}
+} */
 
 /* End Cookie Banner */
 
